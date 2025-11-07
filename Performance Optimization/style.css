@@ -27,7 +27,13 @@ body{
     height: 600px;
     margin-bottom: 10px;
 }
-.img img{
+.img {
     width: 100%;
     border-radius: 10px;
+    opacity: 0;
+}
+.loaded {
+    width: 100%;
+    border-radius: 10px;
+    opacity: 1;
 }

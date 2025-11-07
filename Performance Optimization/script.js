@@ -27,4 +27,22 @@ function thorttle(fnc,delay){
 }
 input.addEventListener("input", thorttle(function(details){
     console.log("Hey");
-},2000))
+},2000));
+
+let images = document.querySelectorAll("img");
+const observer = new IntersectionObserver( function( entries , observe){
+    entries.forEach(function(entry){
+        if(entry.isIntersecting){
+            const img = entry.target;
+            img.src = img.dataset.src;
+            img.classList.add("loaded");
+            observe.unobserve(img)
+        }
+    })
+},{
+   root : null,
+   threshold : 0.5,
+});
+images.forEach(function(img){
+   observer.observe(img); 
+})
