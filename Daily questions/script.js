@@ -15,6 +15,16 @@ const countDigit = (num, target) => {
 }
 console.log(countDigit(5544554545544, 5));
 
-const reverseNumber = ()=>{
-    
+const reverseNumber = (num)=>{
+    if(num === 0)return 0;
+
+    num = Math.trunc(Number(num));
+    let rev = 0;
+    while(num > 0){
+        let digit = Math.floor(num % 10);
+        rev = rev *10 + digit;
+        num = Math.floor(num/ 10);
+    }
+    return rev
 }
+console.log(reverseNumber(8956))
