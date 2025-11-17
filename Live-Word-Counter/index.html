@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live word Counter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-Container">
+        <ul class="info-Area">
+           <div class="sec-word">Words: <span id="wordCount">0</span></div>
+           <div class="sec-character">Characters : <span id="characterCount">0</span></div>
+           <div class="sec-wpm">Reading Time( 200 wpm ) : <span id="wpm">0</span>Sec</div>
+           <div class="sec-longestWord">Longest word : <span id="longestword"> </span></div>
+           <div class="sec-shortestWord">Shortest word : <span id="shortestWord"></span></div>
+        </ul>
+        <div class="textArea-Container">
+            <textarea id="textarea" rows="40" cols="180"></textarea>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
