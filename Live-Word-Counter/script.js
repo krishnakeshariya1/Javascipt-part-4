@@ -7,5 +7,7 @@ const shortestWord  = document.querySelector("#shortestWord");
 
 textArea.addEventListener("input" ,()=>{
     const text = textArea.value;
-    console.log(text)
+    characterCount.textContent = text.length;
+
+    
 })
