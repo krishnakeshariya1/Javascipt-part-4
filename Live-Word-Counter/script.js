@@ -7,7 +7,13 @@ const shortestWord  = document.querySelector("#shortestWord");
 
 textArea.addEventListener("input" ,()=>{
     const text = textArea.value;
+    //count character including spaces
     characterCount.textContent = text.length;
 
-    
+    // count words 
+    const trimmedText = text.trim();
+    const words = trimmedText.split(/\s+/);
+    wordCount.textContent = (trimmedText === "") ? 0 :words.length;  
+
+    //calculate WPM
 })
