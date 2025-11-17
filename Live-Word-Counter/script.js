@@ -5,6 +5,10 @@ const wpm = document.querySelector("#wpm");
 const longestWord = document.querySelector("#longestword");
 const shortestWord = document.querySelector("#shortestWord");
 
+function cleanWord(w) {
+    return w.replace(/^[^\w]+|[^\w]+$/g, "");
+}
+
 textArea.addEventListener("input", () => {
     const text = textArea.value;
     //count character including spaces
@@ -23,8 +27,8 @@ textArea.addEventListener("input", () => {
     wpm.textContent = (seconds < 60) ? seconds.toFixed(1) + "sec " : (seconds / 60).toFixed(2) + "min";
 
     // ignore a an the
-    const ignoreword = ["a", "an", "the"];
-    const filteredWords = word.filter(w => !ignoreword.includes(w));
+    const ignoreword = ["a", "an", "the","!",",","."];
+    const filteredWords = cleanWord.filter(w => !ignoreword.includes(w));
 
     // longest word finding
     let longest = "";
