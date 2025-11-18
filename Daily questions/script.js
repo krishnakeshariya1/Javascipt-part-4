@@ -173,5 +173,71 @@ function countGreaterThan5(num) {
     return count;
 }
 
+function reverseString(str){
+    let rev = "";
 
+    for(let i = str.length-1; i >=0; i--){
+        rev+= str[i];
+    }
+    return rev
+}
+console.log(reverseString("krishna"));
 
+function countOccurrences(arr , target){
+    let count = 0;
+
+    for(let chr of arr){
+        if(chr === target) count++;
+    }
+    return count;
+}
+console.log(countOccurrences([2,4,5,2,3,5,6,2,9,0,2], 2)) // 4
+
+function findMax(arr){
+    if(arr.length === 0) return "Empty array"
+    let max = arr[0];
+
+    for(let char of arr){
+        if(max < char) max = char;
+    }
+    return max
+}
+console.log(findMax([5,6,9,2,0,1]))
+
+function dublicateFind(arr){
+    let result = [];
+
+    for(let char of arr){
+        let exist = false;
+        for(let val of result){
+            if(val === char){
+                exist = true;
+                break;
+            }
+        }
+        if(!exist){
+            result.push(char);
+        }
+    }
+    return result
+}
+console.log(dublicateFind([2,3,4,5,2,4,7,9,0]))
+
+function sumOfNumber(num){
+    let sum = 0;
+    while(num >0){
+        let digit = num%10;
+        sum += digit;
+        num = Math.floor(num / 10);
+    }
+    return sum
+}
+console.log(sumOfNumber(54321))
+
+function isSorted(arr){
+    for(let i =0; i<arr.length-1; i++){
+        if(arr[i] > arr[i+1]) return false
+    }
+    return true
+}
+console.log(isSorted([1,2,3,4,6,8,2]))
