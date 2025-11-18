@@ -119,3 +119,59 @@ function sumDigits(num) {
 
 console.log(sumDigits(5432)); 
 
+function isPalindrome(num) {
+    let original = num;
+    let rev = 0;
+
+    while (num > 0) {
+        let digit = Math.floor(num % 10);
+        rev = rev * 10 + digit;
+        num = Math.floor(num / 10);      
+    }
+
+    return original === rev
+}
+
+console.log(isPalindrome(90009));
+
+function isPalindrome(num) {
+    let original = num;
+    let rev = 0;
+
+    while (num > 0) {
+        let digit = Math.floor(num % 10);
+        rev = rev * 10 + digit;
+        num = Math.floor(num / 10);
+    }
+
+    return original === rev;
+}
+
+console.log(isPalindrome(90009)); // true
+function countEvenDigits(num){
+    let count = 0;
+
+    while (num > 0) {
+        let digit = Math.floor(num % 10);
+        if (digit % 2 === 0) count++;
+        num = Math.floor(num / 10);
+    }
+    return count;
+}
+
+console.log(countEvenDigits(87654321)); 
+
+function countGreaterThan5(num) {
+    let count = 0;
+
+    while (num > 0) {
+        let digit = Math.floor(num % 10);
+        if (digit > 5) count++;
+        num = Math.floor(num / 10);
+    }
+
+    return count;
+}
+
+
+
