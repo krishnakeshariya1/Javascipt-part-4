@@ -86,3 +86,36 @@ const removeDublicate=(arr)=>{
     return newArr
 }
 console.log(removeDublicate([5,7,8,10,5,20,8,5]));
+
+function smallestDigit(num) {
+    let smallest = Infinity;
+
+    while (num > 0) {
+        let digit = Math.floor(num % 10);
+
+        if (digit < smallest) {
+            smallest = digit;
+        }
+
+        num = Math.floor(num / 10);   
+    }
+
+    return smallest;
+}
+
+console.log(smallestDigit(49382));
+
+function sumDigits(num) {
+    let sum = 0;
+
+    while (num) {
+        let digit = Math.floor(num % 10);
+        sum += digit;
+        num = Math.floor(num / 10);
+    }
+
+    return sum;
+}
+
+console.log(sumDigits(5432)); 
+
