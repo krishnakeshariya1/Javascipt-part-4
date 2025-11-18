@@ -44,3 +44,45 @@ const anagramCheck = (str1 ,str2)=>{
     return true
 }
 console.log(anagramCheck("race","care"))
+
+const secondLargest = (arr)=>{
+    let max = -Infinity;
+    let secondLargest = -Infinity;
+
+    for(let char of arr){
+        if(max < char){
+            secondLargest = max;
+            max = char;
+        }
+         else if(secondLargest < char && char < max){
+            secondLargest = char;
+        }
+    }
+    return {
+        max,
+        secondLargest
+    }
+}
+console.log(secondLargest([10,5,20,8,20,7,16]));
+console.log(secondLargest([-5, -10, -3, -3]));
+
+
+const removeDublicate=(arr)=>{
+    const newArr = [];
+    
+    for(let char of arr){
+        let exist = false;
+
+        for(let val of newArr){
+            if(val === char){
+                exist = true;
+                break;
+            }
+        }
+        if(!exist){
+            newArr.push(char)
+        }
+    }
+    return newArr
+}
+console.log(removeDublicate([5,7,8,10,5,20,8,5]));
