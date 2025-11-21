@@ -278,15 +278,44 @@ function findLongestWord(sentence) {
 }
 
 function capitalizeWords(sentence) {
-  const words = sentence.trim().split(" ");
-  let result = [];
+    const words = sentence.trim().split(" ");
+    let result = [];
 
-  for (let word of words) {
-    if (word.length === 0) continue; 
-    result.push(word[0].toUpperCase() + word.slice(1));
-  }
+    for (let word of words) {
+        if (word.length === 0) continue;
+        result.push(word[0].toUpperCase() + word.slice(1));
+    }
 
-  return result.join(" ");
+    return result.join(" ");
 }
 
 console.log(capitalizeWords("krishna  keshariya   sir"));
+
+function mergeArrays(arr1, arr2) {
+
+    if (!Array.isArray(arr1)) throw new Error("input value is not a array");
+    if (!Array.isArray(arr2)) throw new Error("input value is not a array");
+
+    let result = [];
+
+    for (let item of arr1) {
+        result.push(item);
+    }
+    for (let item of arr2) {
+        result.push(item);
+    }
+    return result
+}
+console.log(mergeArrays([2, 3, 4, 5], [6, 7, 8, 9]));
+
+function toStringArray(arr) {
+    if (!Array.isArray(arr)) throw new Error("Invalid input : expected an array");
+
+    const result = [];
+    for (let item of arr) {
+        if(typeof(item) !== "number") throw new Error("Invalid value found: all elements must be numbers")
+        result.push(String(item));
+    }
+    return result;
+}
+console.log(toStringArray([1, 2, 3, 4, 5, 6]));
