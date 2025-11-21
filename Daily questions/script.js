@@ -248,3 +248,45 @@ for (let char of arr) {
     sum += char;
 }
 console.log(`The sum of all elements are :- ${sum}`);
+
+function averageofArray(arr) {
+    let sum = 0;
+    for (let char of arr) {
+        sum += char;
+    }
+    return sum / arr.length;
+}
+console.log(averageofArray([2, 3, 4, 5, 6, 7]))
+
+function findIndexOfArray(arr, target) {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === target) return `Index of element ${target} is :- ${i}`
+    }
+    return "NO match found"
+}
+console.log(findIndexOfArray([2, 3, 4, 5, 6], 4));
+
+function findLongestWord(sentence) {
+    const words = sentence.split(" ");
+    let longest = "";
+    for (let word of words) {
+        if (longest.length < word.length) {
+            longest = word;
+        }
+    }
+    return longest;
+}
+
+function capitalizeWords(sentence) {
+  const words = sentence.trim().split(" ");
+  let result = [];
+
+  for (let word of words) {
+    if (word.length === 0) continue; 
+    result.push(word[0].toUpperCase() + word.slice(1));
+  }
+
+  return result.join(" ");
+}
+
+console.log(capitalizeWords("krishna  keshariya   sir"));
