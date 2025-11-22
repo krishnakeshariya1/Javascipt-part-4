@@ -371,12 +371,12 @@ function printNumberTable(num) {
 
     if (!Number.isInteger(num)) throw new Error("Number must be an integer");
 
-    if(num < 1) throw new Error("Number must be at least 1");
+    if (num < 1) throw new Error("Number must be at least 1");
 
     for (let i = 1; i <= 10; i++) {
-        console.log(`${num} * ${i} = ${i*num}`);
+        console.log(`${num} * ${i} = ${i * num}`);
     }
-    
+
 }
 printNumberTable(5)
 
@@ -396,8 +396,61 @@ function printSumUptoN(num) {
     if (num < 1) {
         throw new Error("Number must be at least 1");
     }
-      const sum = num * (num + 1) / 2;
+    const sum = num * (num + 1) / 2;
     return `The sum of numbers from 1 to ${num} is ${sum}`
 }
 
 console.log(printSumUptoN(12))
+
+function findFactorial(num) {
+    if (typeof num !== "number") {
+        throw new Error("Input must be a number");
+    }
+
+    if (Number.isNaN(num)) {
+        throw new Error("Input cannot be NaN");
+    }
+
+    if (!Number.isInteger(num)) {
+        throw new Error("Number must be an integer");
+    }
+    if(num < 0){
+        throw new  Error("Factorial is not define for negative numbers");
+    }
+     let result = 1;
+
+    for (let i = 2; i <= num; i++) {
+        result *= i;
+    }
+    return `The factorial of ${num} is:- ${result}`
+}
+console.log(findFactorial(5))
+
+
+function countDigit(number){
+    if(typeof number !== "number") {
+        throw new Error("Input must be a nuber");
+    }
+
+    if(Number.isNaN(number)) {
+        throw new Error("Input can not be NAN");
+    }
+    
+    if(!Number.isInteger(number)) {
+        throw new Error("Number must be an integer");
+    }
+
+     number = Math.abs(number);
+
+    if (number === 0) return 1;
+
+    let count = 0;
+
+    while (number > 0) {
+        number = Math.floor(number / 10);
+        count++;
+    }
+
+    return count;
+}
+console.log(countDigit(12225785));
