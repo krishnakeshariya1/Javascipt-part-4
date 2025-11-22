@@ -319,3 +319,16 @@ function toStringArray(arr) {
     return result;
 }
 console.log(toStringArray([1, 2, 3, 4, 5, 6]));
+
+function printToN(num) {
+  if (typeof num !== "number" || Number.isNaN(num))
+    throw new Error("Input must be a valid number");
+
+  if (num < 1) throw new Error("Number must be >= 1");
+
+  for (let i = 1; i <= num; i++) {
+    console.log(i);
+  }
+}
+
+printToN(22);
