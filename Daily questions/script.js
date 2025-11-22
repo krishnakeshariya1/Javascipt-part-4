@@ -313,7 +313,7 @@ function toStringArray(arr) {
 
     const result = [];
     for (let item of arr) {
-        if(typeof(item) !== "number") throw new Error("Invalid value found: all elements must be numbers")
+        if (typeof (item) !== "number") throw new Error("Invalid value found: all elements must be numbers")
         result.push(String(item));
     }
     return result;
@@ -321,14 +321,83 @@ function toStringArray(arr) {
 console.log(toStringArray([1, 2, 3, 4, 5, 6]));
 
 function printToN(num) {
-  if (typeof num !== "number" || Number.isNaN(num))
-    throw new Error("Input must be a valid number");
+    if (typeof num !== "number" || Number.isNaN(num))
+        throw new Error("Input must be a valid number");
 
-  if (num < 1) throw new Error("Number must be >= 1");
+    if (num < 1) throw new Error("Number must be >= 1");
 
-  for (let i = 1; i <= num; i++) {
-    console.log(i);
-  }
+    for (let i = 1; i <= num; i++) {
+        console.log(i);
+    }
 }
 
-printToN(22);
+// printToN(22);
+
+function printEvenNumbers(num) {
+    if (typeof num !== "number" || Number.isNaN(num))
+        throw new Error("Input must be a valid number");
+
+    if (!Number.isInteger(num))
+        throw new Error("Number must be an integer");
+
+    if (num < 2)
+        throw new Error("Number must be at least 2");
+
+    for (let i = 2; i <= num; i += 2) {
+        console.log(i);
+    }
+}
+
+printEvenNumbers(15);
+
+
+function printOddNumber(num) {
+
+    if (typeof num !== "number" || Number.isNaN(num)) throw new Error("Input should be a valide number");
+
+    if (!Number.isInteger(num)) throw new Error("Number must be an integer");
+
+    if (num < 1) throw new Error("Number must be at least 1 ");
+
+    for (let i = 1; i <= num; i += 2) {
+        console.log(i)
+    }
+}
+printOddNumber(2)
+
+
+function printNumberTable(num) {
+    if (typeof num !== "number" || Number.isNaN(num)) throw new Error("Input should be a valide number");
+
+    if (!Number.isInteger(num)) throw new Error("Number must be an integer");
+
+    if(num < 1) throw new Error("Number must be at least 1");
+
+    for (let i = 1; i <= 10; i++) {
+        console.log(`${num} * ${i} = ${i*num}`);
+    }
+    
+}
+printNumberTable(5)
+
+function printSumUptoN(num) {
+    if (typeof num !== "number") {
+        throw new Error("Input must be a number");
+    }
+
+    if (Number.isNaN(num)) {
+        throw new Error("Input cannot be NaN");
+    }
+
+    if (!Number.isInteger(num)) {
+        throw new Error("Number must be an integer");
+    }
+
+    if (num < 1) {
+        throw new Error("Number must be at least 1");
+    }
+      const sum = num * (num + 1) / 2;
+    return `The sum of numbers from 1 to ${num} is ${sum}`
+}
+
+console.log(printSumUptoN(12))
