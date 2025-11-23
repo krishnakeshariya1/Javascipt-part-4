@@ -414,10 +414,10 @@ function findFactorial(num) {
     if (!Number.isInteger(num)) {
         throw new Error("Number must be an integer");
     }
-    if(num < 0){
-        throw new  Error("Factorial is not define for negative numbers");
+    if (num < 0) {
+        throw new Error("Factorial is not define for negative numbers");
     }
-     let result = 1;
+    let result = 1;
 
     for (let i = 2; i <= num; i++) {
         result *= i;
@@ -427,20 +427,20 @@ function findFactorial(num) {
 console.log(findFactorial(5))
 
 
-function countdigit(number){
-    if(typeof number !== "number") {
+function countdigit(number) {
+    if (typeof number !== "number") {
         throw new Error("Input must be a nuber");
     }
 
-    if(Number.isNaN(number)) {
+    if (Number.isNaN(number)) {
         throw new Error("Input can not be NAN");
     }
-    
-    if(!Number.isInteger(number)) {
+
+    if (!Number.isInteger(number)) {
         throw new Error("Number must be an integer");
     }
 
-     number = Math.abs(number);
+    number = Math.abs(number);
 
     if (number === 0) return 1;
 
@@ -456,14 +456,14 @@ function countdigit(number){
 console.log(countdigit(-777));
 function printNumber(num) {
     // 1. validation checks
-    if(typeof num !== "number") {
+    if (typeof num !== "number") {
         throw new Error("Input must be a nuber");
     }
-    
-    if(Number.isNaN(num)) {
+
+    if (Number.isNaN(num)) {
         throw new Error("Input can not be NAN");
     }
-    if(!Number.isInteger(num)) {
+    if (!Number.isInteger(num)) {
         throw new Error("Number must be an integer");
     }
 
@@ -494,4 +494,58 @@ function printNumber(num) {
         digits--;           // TODO
     }
 }
-console.log(printNumber(12345))
+printNumber(12345);
+
+function reverseNumbers(number) {
+    if (typeof number !== "number") throw new Error("Input must be a number ");
+    if (Number.isNaN(number)) throw new Error("Number can not be NAN");
+    if (!Number.isInteger(number)) throw Error("Number must be an integer");
+    isNegative = number < 0;
+    number = Math.abs(number);
+    let rev = 0;
+    while (number > 0) {
+        let digit = number % 10;
+        rev = rev * 10 + digit;
+        number = Math.floor(number / 10);
+    }
+    return isNegative ? -rev : rev;
+}
+console.log(reverseNumbers(-123456));
+
+function checkPalindrome(number) {
+    if (typeof number !== "number") throw new Error("Input must be a number ");
+    if (Number.isNaN(number)) throw new Error("Number can not be NAN");
+    if (!Number.isInteger(number)) throw Error("Number must be an integer");
+    if (number < 0) return false
+    if (number >= 0 && number < 10) return true;
+
+    let temp = number;
+    let rev = 0
+    while (temp > 0) {
+        let digit = temp % 10;
+        rev = rev * 10 + digit;
+        temp = Math.floor(temp / 10);
+    }
+    if (rev === number) return true;
+
+    return isPalindrome;
+}
+console.log(checkPalindrome(-121));
+
+function countOccurrence(number, target) {
+    if (typeof number !== "number" || typeof target !== "number") throw new Error("Input must be a number ");
+    if (Number.isNaN(number) || Number.isNaN(target)) throw new Error("Input can not be NAN");
+    if (!Number.isInteger(number) || !Number.isInteger(target)) throw Error("Input must be an integer");
+    if (target < 0 || target > 9) throw new Error("Digit must be between 0 and 9");
+    if (number === 0 && target === 0) return 1;
+
+    number = Math.abs(number);
+    let count = 0;
+    while (number > 0) {
+        let digit = number % 10;
+        if (digit === target) count++;
+        number = Math.floor(number / 10);
+    }
+    return count;
+}
+console.log(countOccurrence(787787444, 4));
