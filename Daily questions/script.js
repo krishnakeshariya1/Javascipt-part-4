@@ -427,7 +427,7 @@ function findFactorial(num) {
 console.log(findFactorial(5))
 
 
-function countDigit(number){
+function countdigit(number){
     if(typeof number !== "number") {
         throw new Error("Input must be a nuber");
     }
@@ -453,4 +453,45 @@ function countDigit(number){
 
     return count;
 }
-console.log(countDigit(12225785));
+console.log(countdigit(-777));
+function printNumber(num) {
+    // 1. validation checks
+    if(typeof num !== "number") {
+        throw new Error("Input must be a nuber");
+    }
+    
+    if(Number.isNaN(num)) {
+        throw new Error("Input can not be NAN");
+    }
+    if(!Number.isInteger(num)) {
+        throw new Error("Number must be an integer");
+    }
+
+    num = Math.abs(num);
+
+    // 2. handle single digit
+    if (num >= 0 && num <= 9) {
+        console.log(num);
+        return num;
+    }
+
+    // 3. count digits
+    let temp = num;
+    let digits = 0;
+    while (temp > 0) {
+        temp = Math.floor(temp / 10);
+        digits++;
+    }
+
+    // 4. print each digit from left -> right
+    while (digits > 0) {
+        const power = 10 ** (digits - 1);
+
+        const digit = Math.floor(num / power);  // TODO
+        console.log(digit);
+
+        num = num % power;  // TODO
+        digits--;           // TODO
+    }
+}
+console.log(printNumber(12345))
