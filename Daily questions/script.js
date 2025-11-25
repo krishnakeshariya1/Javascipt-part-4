@@ -550,24 +550,100 @@ function countOccurrence(number, target) {
 }
 console.log(countOccurrence(787787444, 4));
 
-function countEvenOdd(number){
-    if(typeof number !== "number") throw new Error("Input must be an Number");
-    if(Number.isNaN(number)) throw new Error("Input can not be NAN");
-    if(!Number.isInteger(number)) throw Error("Number must be an integer");
-    
+function countEvenOdd(number) {
+    if (typeof number !== "number") throw new Error("Input must be an Number");
+    if (Number.isNaN(number)) throw new Error("Input can not be NAN");
+    if (!Number.isInteger(number)) throw Error("Number must be an integer");
+
     number = Math.abs(number);
 
-    if(number === 0) return {even : 1, odd: 0};
+    if (number === 0) return { even: 1, odd: 0 };
 
-    let result = {even : 0, odd: 0};
-    
-    while(number > 0){
+    let result = { even: 0, odd: 0 };
+
+    while (number > 0) {
         let digit = number % 10;
-        if(digit % 2 === 0) result.even++;
+        if (digit % 2 === 0) result.even++;
         else result.odd++;
 
-        number = Math.floor(number / 10) ;
+        number = Math.floor(number / 10);
     }
     return result;
 }
 console.log(countEvenOdd(12234567899));
+
+const countZero = (number) => {
+    if (typeof number !== "number") throw new Error("Input must be an Number");
+    if (Number.isNaN(number)) throw new Error("Input can not be NAN");
+    if (!Number.isInteger(number)) throw Error("Number must be an integer");
+
+    number = Math.abs(number);
+    if (number === 0) return 1;
+
+    let count = 0;
+    while (number > 0) {
+        let digit = number % 10;
+        if (digit === 0) count++;
+        number = Math.floor(number / 10);
+    }
+    return count;
+}
+console.log(countZero(120000));
+
+const countDigitMoreThan5 = (number) => {
+    if (typeof number !== "number") throw new Error("Input must be an Number");
+    if (Number.isNaN(number)) throw new Error("Input can not be NAN");
+    if (!Number.isInteger(number)) throw Error("Number must be an integer");
+
+    number = Math.abs(number);
+    if (number === 0) return 0;
+
+    let count = 0;
+    while (number > 0) {
+        let digit = number % 10;
+        if (digit > 5) count++;
+        number = Math.floor(number / 10);
+    }
+    return count;
+}
+console.log(countDigitMoreThan5(9843983265));
+
+function countEvenDigits(number) {
+    if (typeof number !== "number") throw new Error("Input must be a number");
+    if (Number.isNaN(number)) throw new Error("Input cannot be NaN");
+    if (!Number.isInteger(number)) throw new Error("Number must be an integer");
+
+    number = Math.abs(number);
+
+    if (number === 0) return 1;
+
+    let count = 0;
+
+    while (number > 0) {
+        const digit = number % 10;
+        if (digit % 2 === 0) count++;
+        number = Math.floor(number / 10);
+    }
+
+    return count;
+}
+console.log(countEvenDigits(12224437787));
+
+function countOddDigits(num) {
+    if (typeof num !== "number") throw new Error("Input must be a number");
+    if (Number.isNaN(num)) throw new Error("Input cannot be NaN");
+    if (!Number.isInteger(num)) throw new Error("Number must be an integer");
+
+    num = Math.abs(num);
+
+    if(num === 0) return 0;
+
+    let count = 0
+    while(num > 0){
+        let digit = num % 10;
+        if(digit % 2 !== 0) count++;
+        num = Math.floor(num / 10);
+    }
+    return count;
+}
+console.log(countOddDigits(22555777999));
