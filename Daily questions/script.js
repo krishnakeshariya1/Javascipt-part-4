@@ -549,3 +549,25 @@ function countOccurrence(number, target) {
     return count;
 }
 console.log(countOccurrence(787787444, 4));
+
+function countEvenOdd(number){
+    if(typeof number !== "number") throw new Error("Input must be an Number");
+    if(Number.isNaN(number)) throw new Error("Input can not be NAN");
+    if(!Number.isInteger(number)) throw Error("Number must be an integer");
+    
+    number = Math.abs(number);
+
+    if(number === 0) return {even : 1, odd: 0};
+
+    let result = {even : 0, odd: 0};
+    
+    while(number > 0){
+        let digit = number % 10;
+        if(digit % 2 === 0) result.even++;
+        else result.odd++;
+
+        number = Math.floor(number / 10) ;
+    }
+    return result;
+}
+console.log(countEvenOdd(12234567899));
