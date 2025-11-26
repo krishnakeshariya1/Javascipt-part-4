@@ -647,3 +647,22 @@ function countOddDigits(num) {
     return count;
 }
 console.log(countOddDigits(22555777999));
+
+function countDigitAboveTarget(number , target){
+     if (typeof number !== "number" || typeof target !== "number") throw new Error("Input must be a number ");
+    if (Number.isNaN(number) || Number.isNaN(target)) throw new Error("Input can not be NAN");
+    if (!Number.isInteger(number) || !Number.isInteger(target)) throw Error("Input must be an integer");
+    if (target < 0 || target > 9) throw new Error("Digit must be between 0 and 9");
+    if (number === 0 ) return 0;
+    
+    number = Math.abs(number);
+
+    let count =0
+    while(number > 0){
+        let digit = number % 10;
+        if(digit > target) count++;
+        number = Math.floor(number / 10);
+    }
+return count
+}
+console.log(countDigitAboveTarget(123456789 , 5));
