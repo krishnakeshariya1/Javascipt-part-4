@@ -666,3 +666,76 @@ function countDigitAboveTarget(number , target){
 return count
 }
 console.log(countDigitAboveTarget(123456789 , 5));
+
+function countDigitBelowTarget(number , target){
+     if (typeof number !== "number" || typeof target !== "number") throw new Error("Input must be a number ");
+    if (Number.isNaN(number) || Number.isNaN(target)) throw new Error("Input can not be NAN");
+    if (!Number.isInteger(number) || !Number.isInteger(target)) throw Error("Input must be an integer");
+    if (target < 0 || target > 9) throw new Error("Digit must be between 0 and 9");
+   if (number === 0) return target > 0 ? 1 : 0;
+
+    
+    number = Math.abs(number);
+
+    let count =0
+    while(number > 0){
+        let digit = number % 10;
+        if(digit < target) count++;
+        number = Math.floor(number / 10);
+    }
+return count;
+}
+
+function countDigitEqualToTarget(num , target){
+    if(typeof num !== "number"  || typeof target !== "number") throw new Error("Input must be a number");
+    if(!Number.isInteger(num) || !Number.isInteger(target)) throw new Error("Input must be a integer");
+    if(Number.isNaN(num) || Number.isNaN(target)) throw new Error("Input can not be a NAN");
+    if(target < 0 && target > 9) throw new Error("Target must be between 1 to 9");
+    if(num === 0 && target === 0) return 1;
+
+    num = Math.abs(num);
+
+    let count=0;
+    while(num > 0){
+        let digit = num % 10;
+        if(digit === target) count++;
+        num = Math.floor(num / 10);
+    }
+    return count;
+}
+
+function countDigitsNotEqualToTarget(num , target){
+    if(typeof num !== "number"  || typeof target !== "number") throw new Error("Input must be a number");
+    if(!Number.isInteger(num) || !Number.isInteger(target)) throw new Error("Input must be a integer");
+    if(Number.isNaN(num) || Number.isNaN(target)) throw new Error("Input can not be a NAN");
+    if(target < 0 && target > 9) throw new Error("Target must be between 1 to 9");
+     if (num === 0) return target === 0 ? 0 : 1;
+    num = Math.abs(num);
+
+    let count = 0;
+    while(num > 0){
+        let digit = num % 10;
+        if(digit !== target) count++;
+        num = Math.floor(num / 10);
+    }
+    return count
+}
+
+function countPrimeDigits(num){
+    if(typeof num !== "number") throw new Error("Input must be a number");
+    if(!Number.isInteger(num)) throw new Error("Input should be a integer")
+    if(Number.isNaN(num)) throw new Error("Input can't be a NAN");
+    if(num === 0) return 0
+
+    num = Math.abs(num);
+
+    let count=0;
+    const prime = [2,3,5,7];
+    while(num > 0){
+        let digit = num % 10;
+        if(prime.includes(digit))count++;
+        num = Math.floor(num / 10);
+    }
+    return count;
+}
+console.log(countPrimeDigits(2145678));
