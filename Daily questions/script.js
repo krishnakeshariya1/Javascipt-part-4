@@ -784,32 +784,77 @@ function countSpecialDigit(num) {
 }
 console.log(countSpecialDigit(1234567890));
 
-function isIncreasing(num){
+function isIncreasing(num) {
     if (!Number.isInteger(num)) throw new Error("Input must be an integer");
+    if (num < 0) return false;
 
-    if(num < 0) return false;
-    if(num < 10) return true;
-    let temp = num;
-    let length = 0;
+    num = Math.abs(num);
 
-    
-    while(temp > 0){
-        temp = Math.floor(temp / 10);
-        length++;
-    }
+    if (num < 10) return true;
 
-    let secondDigit = -1;
-    
-    while(length > 0){
-        let power = 10**(length -1); 
-        let digit = Math.floor(num / power);
-        if(secondDigit >= digit) return false;
+    let prev = 10; // bigger than any digit
 
-        secondDigit = digit;
-        num = num % power
-        length--;
+    while (num > 0) {
+        const digit = num % 10;
+
+        if (digit >= prev) return false;
+
+        prev = digit;
+        num = Math.floor(num / 10);
     }
 
     return true;
 }
-console.log(isIncreasing(12645));
+console.log(isIncreasing(-1236))
+
+
+function isDecreasing(num) {
+    if (!Number.isInteger(num)) throw new Error("Input must be an integer");
+    if (num < 0) return false;
+
+    num = Math.abs(num);
+
+    if (num < 10) return true;
+
+    let prev = -1; 
+
+    while (num > 0) {
+        const digit = num % 10;
+
+        if (digit <= prev) return false;
+
+        prev = digit;
+        num = Math.floor(num / 10);
+    }
+
+    return true;
+}
+console.log(isDecreasing(4321));
+
+function isWave(num) {
+    if (!Number.isInteger(num)) throw new Error("Input must be an integer");
+    if (num < 0) return false;
+    if (num < 10) return true;
+
+    // extract digits LEFT → RIGHT
+    let arr = [];
+    let t = num;
+    while (t > 0) {
+        arr.push(t % 10);
+        t = Math.floor(t / 10);
+    }
+    arr.reverse();
+
+    if (arr[0] === arr[1]) return false;
+
+    let expectUp = arr[0] < arr[1];
+
+    for (let i = 1; i < arr.length - 1; i++) {
+        if (expectUp && !(arr[i] < arr[i+1])) return false;
+        if (!expectUp && !(arr[i] > arr[i+1])) return false;
+        expectUp = !expectUp;
+    }
+
+    return true;
+}
+console.log(isWave(1423));
