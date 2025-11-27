@@ -526,9 +526,7 @@ function checkPalindrome(number) {
         rev = rev * 10 + digit;
         temp = Math.floor(temp / 10);
     }
-    if (rev === number) return true;
-
-    return isPalindrome;
+    return rev === temp
 }
 console.log(checkPalindrome(-121));
 
@@ -785,3 +783,33 @@ function countSpecialDigit(num) {
     return result;
 }
 console.log(countSpecialDigit(1234567890));
+
+function isIncreasing(num){
+    if (!Number.isInteger(num)) throw new Error("Input must be an integer");
+
+    if(num < 0) return false;
+    if(num < 10) return true;
+    let temp = num;
+    let length = 0;
+
+    
+    while(temp > 0){
+        temp = Math.floor(temp / 10);
+        length++;
+    }
+
+    let secondDigit = -1;
+    
+    while(length > 0){
+        let power = 10**(length -1); 
+        let digit = Math.floor(num / power);
+        if(secondDigit >= digit) return false;
+
+        secondDigit = digit;
+        num = num % power
+        length--;
+    }
+
+    return true;
+}
+console.log(isIncreasing(12645));
