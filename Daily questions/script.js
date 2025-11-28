@@ -858,3 +858,20 @@ function isWave(num) {
     return true;
 }
 console.log(isWave(1423));
+
+function rigthAngelTriangle(n){
+   if (!Number.isInteger(n) || n <= 0) throw new Error("Input must be an integer");
+   if(n === 1) return n;
+
+   for(let i =1; i<=n; i++){
+    let line ="";
+    for(let j =1; j<=i; j++){
+        line += j;
+    }
+    console.log(line);
+   }
+}
+rigthAngelTriangle(5);
+
+
+
