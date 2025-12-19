@@ -859,19 +859,44 @@ function isWave(num) {
 }
 console.log(isWave(1423));
 
-function rigthAngelTriangle(n){
-   if (!Number.isInteger(n) || n <= 0) throw new Error("Input must be an integer");
-   if(n === 1) return n;
-
-   for(let i =1; i<=n; i++){
-    let line ="";
-    for(let j =1; j<=i; j++){
-        line += j;
+function rdd(arr) {
+    let j =1;
+    for(let i =0;i<arr.length-1;i++){
+        if(arr[i] !== arr[i+1]){
+            arr[j] = arr[i+1];
+            j++;
+        }
     }
-    console.log(line);
-   }
+    return j;
 }
-rigthAngelTriangle(5);
+console.log(rdd([0,0,1,1,2,2,3,3,4,5]));
 
+function maxProfit(arr){
+    let min =Infinity;
+    let maxProfit =0;
+    for(let i=0;i<arr.length;i++){
+        if(min > arr[i]) min = arr[i];
+        let profit = arr[i] - min;
+        maxProfit = Math.max(profit , maxProfit);
+    }
+    return maxProfit;
+}
+console.log(maxProfit([7,1,5,3,6,4]));
+let num1 = [1,2,3,0,0,0];
+let num2 = [2,5,6];
+let i = num1.length-1;
+let j = num2.length-1;
+let k = num1.length-num2.length-1;
 
-
+while(j >=0){
+    if(k >=0 && num1[k] > num2[j]){
+        num1[i] = num1[k];
+        k--;
+    }
+    else{
+        num1[i] = num2[j];
+        j--;
+    }
+    i--;
+}
+console.log(num1)
