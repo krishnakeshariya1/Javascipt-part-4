@@ -14,7 +14,7 @@ class LinkList {
         if (this.head === null) {
             this.head = newNode;
         }
-        else {  
+        else {
             newNode.next = this.head;
             this.head = newNode;
         }
@@ -57,18 +57,29 @@ class LinkList {
             return ` There is no node in linked list`
         }
 
+        if (this.head.data === val) {
+            this.head = this.head.next;
+            console.log(`Deleted head node with value ${val}`);
+            return;
+        }
         let current = this.head;
-        while (current.next.data !== val) {
+        while (current.next && current.next.data !== val) {
             current = current.next;
         }
-        current.next = current.next.next;
+
+        if (current.next) {
+            current.next = current.next.next;
+            console.log(`Deleted node with value ${val}`);
+        } else {
+            console.log(`Value ${val} not found. Nothing deleted.`);
+        }
     }
 }
 const linkList = new LinkList()
- linkList.addFirst(5);
- linkList.addFirst(10)
- linkList.addFirst(15);
- linkList.addFirst(20)
+linkList.addFirst(5);
+linkList.addFirst(10)
+linkList.addFirst(15);
+linkList.addFirst(20)
 linkList.traverse()
 linkList.searchByVal(10);
 linkList.UpdateDataByVal(15, 100);
