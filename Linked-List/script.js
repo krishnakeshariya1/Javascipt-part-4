@@ -9,37 +9,69 @@ class LinkList {
         this.head = null;
     }
     addFirst(data) {
-        const n1 = new Node(data);
-        n1.next = this.head;
-        this.head = n1
-    } traverse() {
+        const newNode = new Node(data);
+
+        if (this.head === null) {
+            this.head = newNode;
+        }
+        else {  
+            newNode.next = this.head;
+            this.head = newNode;
+        }
+    }
+
+    traverse() {
+        if (this.head === null) {
+            return `There is no node in linked list`;
+        }
         let current = this.head;
         while (current) {
             console.log(current.data)
             current = current.next;
         }
     }
+
     searchByVal(val) {
+        if (this.head === null) {
+            return `There is no node in linked list`;
+        }
         let current = this.head;
         while (current.data !== val) {
             current = current.next;
         }
         console.log(`We got the node ${current.data}`)
     }
+
     UpdateDataByVal(val, updateVal) {
+        if (this.head === null) {
+            return `There is no node in linked list`;
+        }
         let current = this.head;
         while (current.data !== val) {
             current = current.next;
         }
         current.data = updateVal;
     }
+    deleteNodeByVal(val) {
+        if (this.head === null) {
+            return ` There is no node in linked list`
+        }
+
+        let current = this.head;
+        while (current.next.data !== val) {
+            current = current.next;
+        }
+        current.next = current.next.next;
+    }
 }
 const linkList = new LinkList()
-const n7 = linkList.addFirst(5);
-const n6 = linkList.addFirst(10)
-const n5 = linkList.addFirst(15);
-const n4 = linkList.addFirst(20)
+ linkList.addFirst(5);
+ linkList.addFirst(10)
+ linkList.addFirst(15);
+ linkList.addFirst(20)
 linkList.traverse()
 linkList.searchByVal(10);
 linkList.UpdateDataByVal(15, 100);
 linkList.traverse()
+linkList.deleteNodeByVal(10);
+linkList.traverse();
